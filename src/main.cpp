@@ -5,15 +5,9 @@
 #include <linux/can.h>
 #include <sys/time.h>
 
+#include "basic.h"
+
 pthread_mutex_t aa;
-
-void printf_int(int port) {
-    printf("------------%d\n", port);
-}
-
-void printf_char(char* ip) {
-    printf("-------------%s\n",ip);
-}
 
 int main()
 {
@@ -24,8 +18,18 @@ int main()
 
     printf_char(ip);
     printf_int(strtol(port, NULL, 10));
+
+    printf_int(add(1,2));
+    //time 
     struct timeval ts;
     struct timezone tz;
     gettimeofday(&ts, &tz);
-    printf("------------------");
+    printf("---------------------");
+
+    uint8_t a[3] = {0,1,2};
+    u_int64_t b = 0;
+    u_int32_t c = 0;
+    
+    test_type(a,&b,&c);
+    printf("------------%d---%d",b,c);
 }
